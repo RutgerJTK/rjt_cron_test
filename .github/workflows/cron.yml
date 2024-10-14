@@ -2,10 +2,10 @@
 
 name: Run Python Script Daily
 
-# This specifies that the workflow will run every day at 12:00 PM UTC
+#Kick off actions at 08:00 on 16th day of every month.” 
 on:
   schedule:
-    - cron: '*/2 * * * *'
+    - cron: '0 8 */1 * *'
 
 # Workflow jobs definition
 jobs:
