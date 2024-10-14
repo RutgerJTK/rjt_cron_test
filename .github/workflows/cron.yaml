@@ -1,0 +1,34 @@
+# .github/workflows/cron.yaml
+
+name: Run Python Script Daily
+
+# This specifies that the workflow will run every day at 12:00 PM UTC
+on:
+  schedule:
+    - cron: '0 12 * * *'
+
+# Workflow jobs definition
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Step 1: Check out the repository
+    - name: Check out repository
+      uses: actions/checkout@v3
+    
+    # Step 2: Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    # Step 3: Install dependencies (if any)
+    # For example, if you have a requirements.txt file, install it here
+    # Uncomment the below if you have dependencies
+    # - name: Install dependencies
+    #   run: pip install -r requirements.txt
+
+    # Step 4: Run the Python script
+    - name: Run Python script
+      run: python script.py
