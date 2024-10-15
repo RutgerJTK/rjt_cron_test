@@ -22,7 +22,7 @@ jobs:
         pip install -r requirements.txt  # If you have any requirements
 
     - name: Run script
-      run: python your_script.py
+      run: python script.py
 
     - name: Commit and push if changes
       run: |
