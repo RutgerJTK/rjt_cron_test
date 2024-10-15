@@ -1,34 +1,32 @@
-# .github/workflows/cron.yaml
+name: Run Script and Update Results
 
-name: Run Python Script Daily
-
-# This specifies that the workflow will run every day at 12:00 PM UTC
 on:
   schedule:
-    - cron: '0 8 */1 * *'
+    - cron: '*/30 * * * *'  # Runs at 8:00 AM UTC daily
 
-# Workflow jobs definition
 jobs:
-  run-script:
+  update-results:
     runs-on: ubuntu-latest
-    
     steps:
-    # Step 1: Check out the repository
     - name: Check out repository
-      uses: actions/checkout@v3
-    
-    # Step 2: Set up Python environment
+      uses: actions/checkout@v2
+
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-    
-    # Step 3: Install dependencies (if any)
-    # For example, if you have a requirements.txt file, install it here
-    # Uncomment the below if you have dependencies
-    # - name: Install dependencies
-    #   run: pip install -r requirements.txt
 
-    # Step 4: Run the Python script
-    - name: Run Python script
-      run: python script.py
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # If you have any requirements
+
+    - name: Run script
+      run: python your_script.py
+
+    - name: Commit and push if changes
+      run: |
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'actions@github.com'
+        git add results.txt
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update results" && git push)
