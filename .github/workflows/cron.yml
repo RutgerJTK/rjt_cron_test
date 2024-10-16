@@ -24,6 +24,9 @@ jobs:
       - name: Run script
         run: python script.py
 
+      - name: Empty the results.txt file
+        run: echo "" > results.txt
+        
       - name: Configure Git
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"

@@ -1,0 +1,4 @@
+# .gitignore
+
+# Ignore the results.txt file
+results.txt
