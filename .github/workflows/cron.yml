@@ -2,7 +2,7 @@ name: Run Script and Update Results
 
 on:
   schedule:
-    - cron: "*/2 * * * *"  # Runs at 8:00 AM UTC daily
+    - cron: "0 8 */1 * *"  # Runs at 8:00 AM UTC daily --> 0 8 */1 * * | */2 * * * *
 
 jobs:
   update-results:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Empty the results.txt file
         run: echo "" > results.txt
-        
+
       - name: Configure Git
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
