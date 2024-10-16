@@ -1,10 +1,12 @@
+import trends_scraper
+
 # script.py
 from datetime import datetime
 
 def main():
     now = datetime.now()
     print(f"The current date and time is: {now}")
-
+    trends_scraper.get_trends()
 
     # Write results to a file   
     with open('results.txt', 'a') as f:
