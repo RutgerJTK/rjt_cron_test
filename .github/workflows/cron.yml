@@ -2,7 +2,7 @@ name: Run Script and Update Results
 
 on:
   schedule:
-    - cron: "*/30 * * * *"  # Runs at 8:00 AM UTC daily
+    - cron: "*/2 * * * *"  # Runs at 8:00 AM UTC daily
 
 jobs:
   update-results:
